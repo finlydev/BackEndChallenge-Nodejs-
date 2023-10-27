@@ -1,0 +1,10 @@
+const express = require('express');
+const { apiGetAll, apiGetById, apiCreate, apiUpdate, apiDelete } = require('../controllers/productController');
+const authenticateToken = require('../middleware/authorization');
+const router = express.Router();
+// router.get('/', authenticateToken, apiGetAll);
+router.get('/',authenticateToken,apiGetById);
+router.post('/', authenticateToken, apiCreate);
+router.put('/', authenticateToken, apiUpdate);
+router.delete('/:productid', authenticateToken, apiDelete);
+module.exports = router;
